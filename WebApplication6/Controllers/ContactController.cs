@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 using UserManagement2.Models;
-using WebApplication6.Models;
 
 namespace WebApplication6.Controllers
 {
-    public class HomeController : Controller
+    public class ContactController : Controller
     {
+
         private readonly TaskManagerContext _context;
 
-        public HomeController(TaskManagerContext context)
+        public ContactController(TaskManagerContext context)
         {
             _context = context;
         }
@@ -20,16 +19,6 @@ namespace WebApplication6.Controllers
             return View();
         }
         public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult ContactUs()
-        {
-            return View();
-        }
-
-        public IActionResult Pricing()
         {
             return View();
         }

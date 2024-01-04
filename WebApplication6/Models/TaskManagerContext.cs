@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebApplication6.Models;
 
 namespace UserManagement2.Models
 {
@@ -10,5 +11,6 @@ namespace UserManagement2.Models
         }
 
         public DbSet<Customer> Customers { get; set; } = null!;
+        public DbSet<Pricing> pricings { get; set; } = null!;
     }
 }
