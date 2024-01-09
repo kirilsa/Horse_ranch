@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace WebApplication6.Migrations
+namespace WebApplication2.Migrations
 {
     /// <inheritdoc />
     public partial class initialcreate : Migration
@@ -16,8 +16,8 @@ namespace WebApplication6.Migrations
                 {
                     CustomerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>

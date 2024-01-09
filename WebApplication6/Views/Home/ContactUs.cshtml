@@ -1,48 +1,51 @@
-﻿@model UserManagement2.Models.Customer
+﻿@model WebApplication2.Models.Customer
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
+    ViewData["Title"] = "Create";
 }
-<h1>Create</h1>
 
-<h4>Customer</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-5">
+
+                <h1>Get in Touch</h1>
+
+                <h4>Explore <a>About Us</a> or contact out team</h4>
+
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FullName" class="control-label"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Message" class="control-label"></label>
+                        <textarea asp-for="Message" class="form-control" rows="6" id="message"></textarea>
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Send" class="btn btn-send" />
+                        <a class="btn btn-back" asp-action="Index">Back to the Main page</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
+            <div class="col-md-5">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71584.23386836582!2d-4.436587776887268!3d55.89723252104247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48884fce12ec80bf%3A0x9ac8fb118505c684!2sA%20%26%20J%20Hendry%2C%20Cochno%20Livery%20Yard!5e0!3m2!1sen!2suk!4v1704639940866!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <a asp-area="" asp-controller="Home" asp-action="Index">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </a>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}</section>
+}

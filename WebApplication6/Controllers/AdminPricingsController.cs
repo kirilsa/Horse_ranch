@@ -7,89 +7,89 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.Models;
 
-namespace WebApplication2.Controllers
+namespace WebApplication6.Controllers
 {
-    public class CustomersController : Controller
+    public class AdminPricingsController : Controller
     {
         private readonly TaskManagerContext _context;
 
-        public CustomersController(TaskManagerContext context)
+        public AdminPricingsController(TaskManagerContext context)
         {
             _context = context;
         }
 
-        // GET: Customers
-        public async Task<IActionResult> Index()
+        // GET: AdminPricings
+        public async Task<IActionResult> AdminPricing()
         {
-              return _context.Customers != null ? 
-                          View(await _context.Customers.ToListAsync()) :
-                          Problem("Entity set 'TaskManagerContext.Customers'  is null.");
+              return _context.Pricings != null ? 
+                          View(await _context.Pricings.ToListAsync()) :
+                          Problem("Entity set 'TaskManagerContext.Pricings'  is null.");
         }
 
-        // GET: Customers/Details/5
+        // GET: AdminPricings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.Pricings == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
-            if (customer == null)
+            var pricing = await _context.Pricings
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (pricing == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(pricing);
         }
 
-        // GET: Customers/Create
+        // GET: AdminPricings/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: AdminPricings/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,FullName,Message,Email")] Customer customer)
+        public async Task<IActionResult> Create([Bind("Id,NameOfService,LengthOfSession,Price,ListOfIncluded")] Pricing pricing)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
+                _context.Add(pricing);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            return View(pricing);
         }
 
-        // GET: Customers/Edit/5
+        // GET: AdminPricings/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.Pricings == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
+            var pricing = await _context.Pricings.FindAsync(id);
+            if (pricing == null)
             {
                 return NotFound();
             }
-            return View(customer);
+            return View(pricing);
         }
 
-        // POST: Customers/Edit/5
+        // POST: AdminPricings/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Message,Email")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameOfService,LengthOfSession,Price,ListOfIncluded")] Pricing pricing)
         {
-            if (id != customer.CustomerId)
+            if (id != pricing.Id)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace WebApplication2.Controllers
             {
                 try
                 {
-                    _context.Update(customer);
+                    _context.Update(pricing);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(customer.CustomerId))
+                    if (!PricingExists(pricing.Id))
                     {
                         return NotFound();
                     }
@@ -114,49 +114,54 @@ namespace WebApplication2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            return View(pricing);
         }
 
-        // GET: Customers/Delete/5
+        // GET: AdminPricings/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.Pricings == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
-            if (customer == null)
+            var pricing = await _context.Pricings
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (pricing == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(pricing);
         }
 
-        // POST: Customers/Delete/5
+        // POST: AdminPricings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Customers == null)
+            if (_context.Pricings == null)
             {
-                return Problem("Entity set 'TaskManagerContext.Customers'  is null.");
+                return Problem("Entity set 'TaskManagerContext.Pricings'  is null.");
             }
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer != null)
+            var pricing = await _context.Pricings.FindAsync(id);
+            if (pricing != null)
             {
-                _context.Customers.Remove(customer);
+                _context.Pricings.Remove(pricing);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerExists(int id)
+        private bool PricingExists(int id)
         {
-          return (_context.Customers?.Any(e => e.CustomerId == id)).GetValueOrDefault();
+          return (_context.Pricings?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
     }
 }

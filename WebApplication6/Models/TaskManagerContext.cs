@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebApplication6.Models;
+using WebApplication2.Models;
 
-namespace UserManagement2.Models
+namespace WebApplication2.Models
 {
     public class TaskManagerContext : DbContext
     {
@@ -11,6 +11,6 @@ namespace UserManagement2.Models
         }
 
         public DbSet<Customer> Customers { get; set; } = null!;
-        public DbSet<Pricing> pricings { get; set; } = null!;
+        public DbSet<Pricing> Pricings { get; set; } = null!;
     }
 }
