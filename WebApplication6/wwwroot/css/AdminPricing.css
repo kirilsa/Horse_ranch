@@ -1,0 +1,21 @@
+﻿.table{
+    color: white;
+}
+
+h1{
+    text-align:center;
+    margin-bottom: 20px;
+}
+
+.container{
+    padding: 15px;
+}
+
+.btn {
+    /*margin: 6px 6px;*/
+    /*border-color: #e2ac34;
+    background-color: #e2ac34;*/
+    /*border-radius: 0.25rem;
+    color: black;
+    text-align: right;*/
+}

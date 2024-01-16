@@ -1,18 +1,13 @@
-﻿body {
-    background-color: rgb(38, 38, 38)
-}
-
+﻿
 h1, h4, label{
     color: white;
 }
 
 .btn {
-    margin-top: 6px;
-    margin-right: 12px;
+    margin: 6px 6px;
     border-color: #e2ac34;
     background-color: #e2ac34;
     border-radius: 0.25rem;
-    padding: 6 12rem;
 }
 
 .btn-send {
@@ -21,4 +16,16 @@ h1, h4, label{
 
 .btn-back {
     color: gray;
+}
+
+iframe{
+    width: 100%
+}
+
+@media only screen and (min-width: 819px) {
+    
+    .container {
+        width: 990px;
+        padding-top: 1%;
+    }
 }

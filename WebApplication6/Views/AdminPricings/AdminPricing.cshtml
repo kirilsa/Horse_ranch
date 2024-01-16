@@ -1,53 +1,62 @@
-﻿@model IEnumerable<WebApplication2.Models.Pricing>
+﻿<link rel="stylesheet" href="~/css/AdminPricing.css" asp-append-version="true" />
+
+@model IEnumerable<WebApplication2.Models.Pricing>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container">
+    <h1>Manage pricing page</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NameOfService)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LengthOfSession)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ListOfIncluded)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+    @Html.DisplayNameFor(model => model.NameOfService)
+                    </th>
+                    <th>
+    @Html.DisplayNameFor(model => model.LengthOfSession)
+                    </th>
+                    <th>
+    @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+    @Html.DisplayNameFor(model => model.ListOfIncluded)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+    @foreach (var item in Model)
+    {
+                    <tr>
+                        <td>
                 @Html.DisplayFor(modelItem => item.NameOfService)
-            </td>
-            <td>
+                        </td>
+                        <td>
                 @Html.DisplayFor(modelItem => item.LengthOfSession)
-            </td>
-            <td>
+                        </td>
+                        <td>
                 @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
+                        </td>
+                        <td>
                 @Html.DisplayFor(modelItem => item.ListOfIncluded)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                        </td>
+                        <td>
+                            <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+
+                            <form asp-action="Delete">
+                                <input type="hidden" asp-action="Delete" asp-route-id="@item.Id" />
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+    }
+            </tbody>
+        </table>
+
+    <p>
+        <a class="btn btn-primary" asp-action="CreatePrice">Create New</a>
+    </p>
+</div>

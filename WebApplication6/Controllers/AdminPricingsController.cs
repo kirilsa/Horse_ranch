@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.Models;
 
@@ -21,9 +16,9 @@ namespace WebApplication6.Controllers
         // GET: AdminPricings
         public async Task<IActionResult> AdminPricing()
         {
-              return _context.Pricings != null ? 
-                          View(await _context.Pricings.ToListAsync()) :
-                          Problem("Entity set 'TaskManagerContext.Pricings'  is null.");
+            return _context.Pricings != null ?
+                        View(await _context.Pricings.ToListAsync()) :
+                        Problem("Entity set 'TaskManagerContext.Pricings'  is null.");
         }
 
         // GET: AdminPricings/Details/5
@@ -45,7 +40,7 @@ namespace WebApplication6.Controllers
         }
 
         // GET: AdminPricings/Create
-        public IActionResult Create()
+        public IActionResult CreatePrice()
         {
             return View();
         }
@@ -149,14 +144,14 @@ namespace WebApplication6.Controllers
             {
                 _context.Pricings.Remove(pricing);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PricingExists(int id)
         {
-          return (_context.Pricings?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Pricings?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
         public IActionResult Index()
