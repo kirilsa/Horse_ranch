@@ -149,6 +149,13 @@ namespace WebApplication6.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> AdminRequests()
+        {
+            return _context.Customers != null ?
+                        View(await _context.Customers.ToListAsync()) :
+                        Problem("Entity set 'TaskManagerContext.Customers'  is null.");
+        }
+
         private bool PricingExists(int id)
         {
             return (_context.Pricings?.Any(e => e.Id == id)).GetValueOrDefault();

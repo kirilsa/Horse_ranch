@@ -13,6 +13,7 @@ h1{
 table {
     padding: 0.5rem 0;
     color: white;
+    width: 100%;
 }
 
 tbody {
@@ -45,9 +46,7 @@ tbody {
     border-radius: 5px;
 }
 
-
 td {
-    text-align: center;
     padding: 0.5rem 0;
     min-width: 145px;
 }
