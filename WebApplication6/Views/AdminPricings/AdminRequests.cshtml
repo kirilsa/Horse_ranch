@@ -1,14 +1,13 @@
-﻿@model IEnumerable<WebApplication2.Models.Customer>
+﻿<link rel="stylesheet" href="~/css/AdminPricing.css" asp-append-version="true" />
+
+@model IEnumerable<WebApplication2.Models.Customer>
 
 @{
     ViewData["Title"] = "AdminRequests";
 }
 
-<h1>AdminRequests</h1>
+<h1>Admin Requests</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -21,6 +20,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Message)
             </th>
+            <th></th>
             <th></th>
         </tr>
     </thead>
@@ -36,12 +36,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CustomerId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
+                <td class="tableBTN">
+                <a class="btn btn-info" asp-controller="AdminPricings" asp-action="CustomerDetails" asp-route-id="@item.CustomerId">Details</a>
             </td>
+                <td class="tableBTN">
+                <form asp-controller="Customers" asp-action="Delete" method="post" asp-route-id="@item.CustomerId">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </form>
+            </td>
+            
         </tr>
 }
     </tbody>
 </table>
+
+
+

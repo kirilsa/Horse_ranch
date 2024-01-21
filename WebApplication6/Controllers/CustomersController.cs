@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.Models;
 
@@ -21,12 +16,12 @@ namespace WebApplication2.Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-              return _context.Customers != null ? 
-                          View(await _context.Customers.ToListAsync()) :
-                          Problem("Entity set 'TaskManagerContext.Customers'  is null.");
+            return _context.Customers != null ?
+                        View(await _context.Customers.ToListAsync()) :
+                        Problem("Entity set 'TaskManagerContext.Customers'  is null.");
         }
 
-        // GET: Customers/Details/5
+        // GET: Customers/CustomerDetails/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Customers == null)
@@ -149,14 +144,14 @@ namespace WebApplication2.Controllers
             {
                 _context.Customers.Remove(customer);
             }
-            
+
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("AdminRequests", "AdminPricings");
         }
 
         private bool CustomerExists(int id)
         {
-          return (_context.Customers?.Any(e => e.CustomerId == id)).GetValueOrDefault();
+            return (_context.Customers?.Any(e => e.CustomerId == id)).GetValueOrDefault();
         }
     }
 }

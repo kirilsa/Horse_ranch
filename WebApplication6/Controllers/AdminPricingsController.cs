@@ -21,16 +21,16 @@ namespace WebApplication6.Controllers
                         Problem("Entity set 'TaskManagerContext.Pricings'  is null.");
         }
 
-        // GET: AdminPricings/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: AdminPricings/CustomerDetails/5
+        public async Task<IActionResult> CustomerDetails(int? id)
         {
-            if (id == null || _context.Pricings == null)
+            if (id == null || _context.Customers == null)
             {
                 return NotFound();
             }
 
-            var pricing = await _context.Pricings
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var pricing = await _context.Customers
+                .FirstOrDefaultAsync(m => m.CustomerId == id);
             if (pricing == null)
             {
                 return NotFound();
