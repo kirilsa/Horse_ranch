@@ -3,26 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication6</title>
+    <title>@ViewData["Title"] - WebApplication2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-@*     <link rel="stylesheet" href="~/WebApplication6.styles.css" asp-append-version="true" />
- *@</head>
+    <link rel="stylesheet" href="~/css/mainPage.css" asp-append-version="true" />
+</head>
 <body>
     <header>
         <div class="navbar">
             <div class="container">
                 <a class="logo" asp-area="" asp-controller="Home" asp-action="Index" >Remember<span>That</span></a>
 
-                <img id="mobile-cta" class="mobile-menu" asp src="images/menu.svg" alt="Open Navigation">
+                <img id="mobile-cta" class="mobile-menu" src="images/menu.svg" alt="Open Navigation">
 
                 <nav>
                     <img id="mobile-exit" class="mobile-menu-exit" src="images/exit.svg" alt="Close Navigation">
 
                     <ul class="primary-nav">
-                        <li class="current"><a href="#">Home</a></li>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Pricing</a></li>
+                        <li class="current"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="AdminPricings" asp-action="Index">Admin Access</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Pricing">Pricing</a></li>
                     </ul>
 
                     <ul class="secondary-nav">
@@ -34,14 +33,39 @@
         </div>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
+    <div class="endOfPage">
+        <div class="container">
+            <h3 class="aboutMe">About Me</h3>
+
+            <p class="desAbout">Powered by C#, HTML, and CSS, the site leverages the robust capabilities of .NET 6.0 and ASP.NET Core MVC for a robust and scalable backend. With the efficiency of Entity Framework, data management becomes a breeze. The user interface is polished using Bootstrap, ensuring a responsive and visually appealing design.</p>
+
+            <div class="socialMedia">
+                <a href="https://www.facebook.com/KirilSolominskiy">
+                    <img src="~/images/5296499_fb_facebook_facebook logo_icon.png" alt="Facebook link">
+                </a>
+                <a href="#">
+                    <img src="~/images/5296516_tweet_twitter_twitter logo_icon.svg" alt="Twitter link">
+                </a>
+                <a href="https://wa.me/+380997170929">
+                    <img src="~/images/5296520_bubble_chat_mobile_whatsapp_whatsapp logo_icon.png" alt="WhatsApp link">
+                </a>
+                <a href="www.linkedin.com/in/kyryl-solominskyi-47586b291">
+                    <img src="~/images/5296501_linkedin_network_linkedin logo_icon.png" alt="LinkedIn link">
+                </a>
+            </div>
+
+            <p class="madeBy">This website is proudly crafted by Kyryl Solominskyi</p>
+        </div>
+    </div>
+
     @* <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - WebApplication6 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - WebApplication2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div> *@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

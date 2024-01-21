@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using UserManagement2.Models;
-using WebApplication6.Models;
+using WebApplication2.Models;
 
-namespace WebApplication6.Controllers
+namespace WebApplication2.Controllers
 {
     public class HomeController : Controller
     {
@@ -29,14 +28,9 @@ namespace WebApplication6.Controllers
             return View();
         }
 
-        public IActionResult Pricing()
-        {
-            return View();
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,FirstName,LastName,Email")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerId,FullName,Message,Email")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -45,6 +39,13 @@ namespace WebApplication6.Controllers
                 return RedirectToAction(nameof(Privacy));
             }
             return View(customer);
+        }
+
+        public async Task<IActionResult> Pricing()
+        {
+            return _context.Pricings != null ?
+                        View(await _context.Pricings.ToListAsync()) :
+                        Problem("Entity set 'TaskManagerContext.Pricings'  is null.");
         }
     }
 }

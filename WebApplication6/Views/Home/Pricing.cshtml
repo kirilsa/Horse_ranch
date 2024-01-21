@@ -1,0 +1,40 @@
+﻿<link rel="stylesheet" href="~/css/Pricing.css" asp-append-version="true" />
+
+@model IEnumerable<WebApplication2.Models.Pricing>
+
+@{
+    ViewData["Title"] = "Pricing";
+}
+
+<h1>Check out our services, we can provide exelent service</h1>
+
+<section>
+    <div class="container">
+        <div class="responsive-table">
+            <table>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="price-box">
+                            <td class="first">
+                                <span>Made for: </span>@Html.DisplayFor(modelItem => item.NameOfService)
+                            </td>
+                            <td class="second">
+                                <span>Price: </span>@Html.DisplayFor(modelItem => item.Price)<span>£</span>
+                            </td>
+                            <td class="second">
+                                <span>Time: </span>@Html.DisplayFor(modelItem => item.LengthOfSession) <span>h.</span>
+                            </td>
+                            <td class="second">
+                                <span>Description: </span>@Html.DisplayFor(modelItem => item.ListOfIncluded)
+                            </td>
+                            <td>
+                                <a class="btn-details" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

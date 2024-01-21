@@ -1,19 +1,18 @@
-﻿using MessagePack;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication6.Models
+namespace WebApplication2.Models
 {
     public class Pricing
     {
+        [Key]
         public int Id { get; set; }
-
         [Required]
-        public string NameOfService { get; set; }
+        public string? NameOfService { get; set; }
         [Required]
-        public int LengthOfSession { get; set; }
+        public int? LengthOfSession { get; set; }
         [Required]
-        public int Price { get; set; }
+        public int? Price { get; set; }
         [Required]
-        public string ListOfIncluded { get; set; }
+        public string? ListOfIncluded { get; set; }
     }
 }

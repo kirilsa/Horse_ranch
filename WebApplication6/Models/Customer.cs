@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace UserManagement2.Models
+namespace WebApplication2.Models
 {
     public class Customer
     {
@@ -8,12 +8,12 @@ namespace UserManagement2.Models
         public int CustomerId { get; set; }
         [Required]
         [MaxLength(50)]
-        public string? FirstName { get; set; }
+        public string? FullName { get; set; }
         [Required]
         [MaxLength(50)]
-        public string? LastName { get; set; }
+        public string? Email { get; set; }
         [Required]
         [MaxLength(100)]
-        public string? Email { get; set; }
+        public string? Message { get; set; }
     }
 }
